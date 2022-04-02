@@ -1,0 +1,14 @@
+.nav {
+    grid-area: n;
+    background-color: goldenrod;
+    padding-left: 10px;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+.item a.active {
+    color: brown;
+}
