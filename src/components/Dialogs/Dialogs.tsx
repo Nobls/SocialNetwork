@@ -4,11 +4,11 @@ import Message from "./Message/Message";
 
 function Dialogs(props: any) {
 
-    const {dialogs,messages} = props
+    const {state} = props
 
-    let dialogsElements = dialogs.map((dialogs: { name: any; id: any; }) => <DialogItem name={dialogs.name} id={dialogs.id}/>)
+    let dialogsElements = state.dialogs.map((dialogs: { name: any; id: any; }) => <DialogItem name={dialogs.name} id={dialogs.id}/>)
 
-    let messagesElements = messages.map((messages: { message: any; }) => <Message message={messages.message}/>)
+    let messagesElements = state.messages.map((messages: { message: any; }) => <Message message={messages.message}/>)
 
     return (
         <div className={s.dialogs}>

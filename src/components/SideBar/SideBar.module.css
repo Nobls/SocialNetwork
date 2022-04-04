@@ -1,0 +1,13 @@
+.title{
+    color: white;
+    font-size: 25px;
+}
+
+.sideBar{
+
+}
+
+.friendsItem{
+    display: flex;
+    justify-content: space-around;
+}

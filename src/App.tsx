@@ -16,16 +16,16 @@ export type PropsType = {
 
 function App(props:any) {
 
-    const {posts, dialogs, messages} = props
+    const {state} = props
 
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar state={state}/>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={()=><Dialogs dialogs={dialogs} messages={messages}/>}/>
-                    <Route path='/profile' render={()=><Profile posts={posts}/>}/>
+                    <Route path='/dialogs' render={()=><Dialogs state={state.dialogsPage}/>}/>
+                    <Route path='/profile' render={()=><Profile state={state.profilePage}/>}/>
                     <Route path='/news' render={()=><News/>}/>
                     <Route path='/music' render={()=><Music/>}/>
                     <Route path='/settings' render={()=><Settings/>}/>
