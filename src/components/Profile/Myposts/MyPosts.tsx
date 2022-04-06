@@ -27,6 +27,7 @@ function MyPosts(props:PropsType) {
                 </div>
                 <div>
                     <button>Add Post</button>
+                    <button>Delete Post</button>
                 </div>
             </div>
 
