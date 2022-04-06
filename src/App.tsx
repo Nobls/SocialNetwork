@@ -8,13 +8,13 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
+import {RootStateType} from "./redux/state";
 
-
-export type PropsType = {
-
+type PropsType = {
+    state: RootStateType
 }
 
-function App(props:any) {
+function App(props: PropsType) {
 
     const {state} = props
 

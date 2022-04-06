@@ -2,8 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from './Navbar.module.css'
 import SideBar from "../SideBar/SideBar";
+import {RootStateType} from "../../redux/state";
 
-function Navbar(props: any) {
+type PropsType = {
+    state: RootStateType
+}
+
+function Navbar(props: PropsType) {
 
     const {state} = props
 

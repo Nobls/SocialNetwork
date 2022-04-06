@@ -1,12 +1,17 @@
 import React from 'react';
 import Friends from "./Friends/Friends";
 import s from './SideBar.module.css'
+import {SideBarType} from "../../redux/state";
 
-const SideBar = (props: any) => {
+type PropsType = {
+    state: SideBarType
+}
+
+const SideBar = (props: PropsType) => {
 
     const {state} = props
 
-    let friendsItem = state.friends.map((friends: { name: any; }) => <Friends name={friends.name}/>)
+    let friendsItem = state.friends.map((friends) => <Friends name={friends.name}/>)
 
     return (
         <div className={s.sideBar}>

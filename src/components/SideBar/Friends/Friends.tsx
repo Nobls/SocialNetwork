@@ -1,7 +1,10 @@
 import React from 'react';
-import {state} from "../../../redux/state";
 
-const Friends = (props:any) => {
+type PropsType = {
+    name: string
+}
+
+const Friends = (props:PropsType) => {
 
     const {name} = props
 
