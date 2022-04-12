@@ -1,17 +1,25 @@
-import React from "react";
+import React, {MouseEventHandler} from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {PostsType} from "../../../redux/state";
 
 type PropsType = {
     posts: PostsType[]
+    addPost: (postMessage:string)=>void
 }
 
 function MyPosts(props:PropsType) {
 
-    const {posts} = props
+    const {posts, addPost} = props
 
     let postsElements = posts.map( p => <Post message={p.message} likesCount={p.likesCount}/> )
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+
+    let addNewPost = ()=>{
+        let text = newPostElement.current?.value
+            addPost('')
+    }
 
     return (
 
@@ -21,16 +29,14 @@ function MyPosts(props:PropsType) {
             </h3>
             <div>
                 <div>
-                    <textarea>
+                    <textarea ref={newPostElement}>
 
                     </textarea>
                 </div>
                 <div>
-                    <button>Add Post</button>
-                    <button>Delete Post</button>
+                    <button onClick={()=>addNewPost()}>Add Post</button>
                 </div>
             </div>
-
             <div className={s.posts}>
                 {postsElements}
             </div>

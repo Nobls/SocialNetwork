@@ -2,6 +2,7 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPageType} from "../../redux/state";
+import React from "react";
 
 type PropsType = {
     state: DialogsPageType
@@ -15,6 +16,12 @@ function Dialogs(props: PropsType) {
 
     let messagesElements = state.messages.map((messages) => <Message message={messages.message}/>)
 
+    let newMessageElement = React.createRef<HTMLTextAreaElement>()
+
+    let addMessage = ()=> {
+        alert(newMessageElement.current?.value)
+    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_item}>
@@ -23,6 +30,11 @@ function Dialogs(props: PropsType) {
             <div className={s.messages}>
                 {messagesElements}
             </div>
+
+            <textarea ref={newMessageElement}>
+
+            </textarea>
+            <button onClick={addMessage}>Add Message</button>
         </div>
     )
 }

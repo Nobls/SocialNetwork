@@ -12,11 +12,12 @@ import {RootStateType} from "./redux/state";
 
 type PropsType = {
     state: RootStateType
+    addPost: (postMessage:string)=> void
 }
 
 function App(props: PropsType) {
 
-    const {state} = props
+    const {state, addPost} = props
 
     return (
         <BrowserRouter>
@@ -25,7 +26,7 @@ function App(props: PropsType) {
                 <Navbar state={state}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs' render={()=><Dialogs state={state.dialogsPage}/>}/>
-                    <Route path='/profile' render={()=><Profile state={state.profilePage}/>}/>
+                    <Route path='/profile' render={()=><Profile state={state.profilePage} addPost={addPost}/>}/>
                     <Route path='/news' render={()=><News/>}/>
                     <Route path='/music' render={()=><Music/>}/>
                     <Route path='/settings' render={()=><Settings/>}/>
