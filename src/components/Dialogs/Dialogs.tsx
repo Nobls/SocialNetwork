@@ -12,23 +12,25 @@ function Dialogs(props: PropsType) {
 
     const {state} = props
 
-    let dialogsElements = state.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>)
+    // let dialogsElements = state.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>)
 
-    let messagesElements = state.messages.map((messages) => <Message message={messages.message}/>)
+    // let messagesElements = state.messages.map((messages) => <Message message={messages.message}/>)
 
-    let newMessageElement = React.createRef<HTMLTextAreaElement>()
+    const newMessageElement = React.createRef<HTMLTextAreaElement>()
 
-    let addMessage = ()=> {
+    const addMessage = ()=> {
         alert(newMessageElement.current?.value)
     }
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_item}>
-                {dialogsElements}
+                {/*{dialogsElements}*/}
+                {state.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>)}
             </div>
             <div className={s.messages}>
-                {messagesElements}
+                {/*{messagesElements}*/}
+                {state.messages.map((messages) => <Message message={messages.message}/>)}
             </div>
 
             <textarea ref={newMessageElement}>
