@@ -1,4 +1,6 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree = (state:RootStateType)=> {
+    console.log('log')
+}
 
 export type PostsType = {
     id: number
@@ -51,9 +53,9 @@ export const state: RootStateType = {
             {id: 5, message: 'Yo'}
         ],
         dialogs: [
-            {id: 1, name: 'Dimych'},
+            {id: 1, name: 'Dima'},
             {id: 2, name: 'Andrey'},
-            {id: 3, name: 'Sveta'},
+            {id: 3, name: 'Svetlana'},
             {id: 4, name: 'Sasha'},
             {id: 5, name: 'Viktor'},
             {id: 6, name: 'Valera'}
@@ -61,9 +63,9 @@ export const state: RootStateType = {
     },
     sideBar: {
         friends: [
-            {id: 1, name: 'Dimych',},
+            {id: 1, name: 'Dima',},
             {id: 2, name: 'Andrey',},
-            {id: 3, name: 'Sveta',},
+            {id: 3, name: 'Svetlana',},
         ]
     },
 }
@@ -78,4 +80,8 @@ export const addPost = () => {
 export const changeNewPostText = (changeText: string) => {
     state.profilePage.newPostText = changeText
     renderEntireTree(state)
+}
+
+export const subscribe = (observer:any) => {
+    renderEntireTree = observer
 }
