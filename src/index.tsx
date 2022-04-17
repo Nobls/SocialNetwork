@@ -3,20 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addPost, changeNewPostText, RootStateType, state, subscribe} from "./redux/state";
+import {RootStateType, store} from "./redux/state";
 
 let renderEntireTree = (state: RootStateType)=>{
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost} changeNewPostText={changeNewPostText}/>
+            <App state={store.getState()} addPost={store.addPost} changeNewPostText={store.changeNewPostText}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
-subscribe(renderEntireTree)
+store.subscribe(renderEntireTree)
 
 
 reportWebVitals();

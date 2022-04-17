@@ -1,6 +1,61 @@
-let renderEntireTree = (state:RootStateType)=> {
-    console.log('log')
+export const store = {
+    _state: {
+    profilePage: {
+        posts: [
+            {id: 1, message: 'Hi, how are you?', likesCount: 23},
+            {id: 2, message: 'It\'s my first post', likesCount: 34},
+        ],
+        newPostText: '',
+    },
+    dialogsPage: {
+        messages: [
+            {id: 1, message: 'Hi'},
+            {id: 2, message: 'How is your name?'},
+            {id: 3, message: 'HO HO'},
+            {id: 4, message: 'HA HA'},
+            {id: 5, message: 'Yo'}
+        ],
+        dialogs: [
+            {id: 1, name: 'Dima'},
+            {id: 2, name: 'Andrey'},
+            {id: 3, name: 'Svetlana'},
+            {id: 4, name: 'Sasha'},
+            {id: 5, name: 'Viktor'},
+            {id: 6, name: 'Valera'}
+        ],
+    },
+    sideBar: {
+        friends: [
+            {id: 1, name: 'Dima',},
+            {id: 2, name: 'Andrey',},
+            {id: 3, name: 'Svetlana',},
+        ]
+    },
+},
+    getState(){
+        return this._state
+    },
+    renderEntireTree (state:RootStateType) {
+        console.log('log')
+    },
+    addPost() {
+        const newPost: PostsType = {id: 3, message: this._state.profilePage.newPostText, likesCount: 0}
+            this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this.renderEntireTree(this._state)
+    },
+    changeNewPostText(changeText: string) {
+        this._state.profilePage.newPostText = changeText
+        this.renderEntireTree(this._state)
+    },
+    subscribe(observer:any) {
+        this.renderEntireTree = observer
+    },
 }
+
+/*let renderEntireTree = (state:RootStateType)=> {
+    console.log('log')
+}*/
 
 export type PostsType = {
     id: number
@@ -36,7 +91,7 @@ export type RootStateType = {
     sideBar: SideBarType
 }
 
-export const state: RootStateType = {
+/*export const state: RootStateType = {
     profilePage: {
         posts: [
             {id: 1, message: 'Hi, how are you?', likesCount: 23},
@@ -68,20 +123,21 @@ export const state: RootStateType = {
             {id: 3, name: 'Svetlana',},
         ]
     },
-}
+}*/
 
-export const addPost = () => {
+/*export const addPost = () => {
     const newPost: PostsType = {id: 3, message: state.profilePage.newPostText, likesCount: 0}
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
     renderEntireTree(state)
-}
+}*/
 
-export const changeNewPostText = (changeText: string) => {
+/*export const changeNewPostText = (changeText: string) => {
     state.profilePage.newPostText = changeText
     renderEntireTree(state)
-}
+}*/
 
+/*
 export const subscribe = (observer:any) => {
     renderEntireTree = observer
-}
+}*/
