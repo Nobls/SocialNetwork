@@ -35,27 +35,23 @@ export const store = {
     getState(){
         return this._state
     },
-    renderEntireTree (state:RootStateType) {
+    _callSubscriber (state:RootStateType) {
         console.log('log')
     },
     addPost() {
         const newPost: PostsType = {id: 3, message: this._state.profilePage.newPostText, likesCount: 0}
             this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ''
-        this.renderEntireTree(this._state)
+        this._callSubscriber(this._state)
     },
     changeNewPostText(changeText: string) {
         this._state.profilePage.newPostText = changeText
-        this.renderEntireTree(this._state)
+        this._callSubscriber(this._state)
     },
     subscribe(observer:any) {
-        this.renderEntireTree = observer
+        this._callSubscriber = observer
     },
 }
-
-/*let renderEntireTree = (state:RootStateType)=> {
-    console.log('log')
-}*/
 
 export type PostsType = {
     id: number
@@ -90,6 +86,10 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
     sideBar: SideBarType
 }
+
+/*let renderEntireTree = (state:RootStateType)=> {
+    console.log('log')
+}*/
 
 /*export const state: RootStateType = {
     profilePage: {

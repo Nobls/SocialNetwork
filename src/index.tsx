@@ -8,7 +8,10 @@ import {RootStateType, store} from "./redux/state";
 let renderEntireTree = (state: RootStateType)=>{
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store.getState()} addPost={store.addPost} changeNewPostText={store.changeNewPostText}/>
+            <App state={state}
+                 addPost={store.addPost.bind(store)}
+                 changeNewPostText={store.changeNewPostText.bind(store)}
+            />
         </React.StrictMode>,
         document.getElementById('root')
     );
