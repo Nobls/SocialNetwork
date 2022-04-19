@@ -25,3 +25,8 @@
 .message {
 
 }
+
+.inputWrapper{
+    display: flex;
+    margin-top: 25px;
+}

@@ -8,17 +8,17 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import {RootStateType} from "./redux/state";
+import {AllActionCreatorType, RootStateType, StoreType} from "./redux/state";
 
 type PropsType = {
+    store: StoreType
     state: RootStateType
-    addPost: ()=> void
-    changeNewPostText: (changeText: string)=>void
+    dispatch: (action: AllActionCreatorType) => void
 }
 
 function App(props: PropsType) {
 
-    const {state, addPost, changeNewPostText} = props
+    const {state,dispatch} = props
 
     return (
         <BrowserRouter>
@@ -26,8 +26,8 @@ function App(props: PropsType) {
                 <Header/>
                 <Navbar state={state}/>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={()=><Dialogs state={state.dialogsPage}/>}/>
-                    <Route path='/profile' render={()=><Profile state={state.profilePage} addPost={addPost} changeNewPostText={changeNewPostText}/>}/>
+                    <Route path='/dialogs' render={()=><Dialogs state={state.dialogsPage} dispatch={dispatch}/>}/>
+                    <Route path='/profile' render={()=><Profile state={state.profilePage} dispatch={dispatch}/>}/>
                     <Route path='/news' render={()=><News/>}/>
                     <Route path='/music' render={()=><Music/>}/>
                     <Route path='/settings' render={()=><Settings/>}/>
