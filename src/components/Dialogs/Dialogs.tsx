@@ -7,11 +7,12 @@ import React, {ChangeEvent} from "react";
 type PropsType = {
     state: DialogsPageType
     dispatch: (action: AllActionCreatorType) => void
+    newMessageText: string
 }
 
 function Dialogs(props: PropsType) {
 
-    const {state, dispatch} = props
+    const {state, dispatch, newMessageText} = props
 
     // let dialogsElements = state.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>)
 
@@ -21,8 +22,8 @@ function Dialogs(props: PropsType) {
         dispatch(addMessageAC(state.newMessageText))
     }
     const onChangeMessageHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const newMessage = e.currentTarget.value
-        dispatch(onMessageChangeAC(newMessage))
+        const changeText = e.currentTarget.value
+        dispatch(onMessageChangeAC(changeText))
     }
 
     return (
@@ -35,7 +36,7 @@ function Dialogs(props: PropsType) {
                 {/*{messagesElements}*/}
                 {state.messages.map((messages) => <Message dispatch={dispatch} message={messages.message}/>)}
                 <div className={s.inputWrapper}>
-                    <textarea onChange={onChangeMessageHandler}>
+                    <textarea value={newMessageText} onChange={onChangeMessageHandler}>
 
                     </textarea>
                     <button onClick={addMessageHandler}>Add Message</button>
